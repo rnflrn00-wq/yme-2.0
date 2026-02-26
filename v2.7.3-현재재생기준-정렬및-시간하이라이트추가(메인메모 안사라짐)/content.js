@@ -8,8 +8,15 @@ function getVideoId() {
 function removeExistingMemo() {
   const existing = document.getElementById("yt-memo-box");
   if (existing) existing.remove();
+
+  if (baseMemoHideTimer) {
+    clearTimeout(baseMemoHideTimer);
+    baseMemoHideTimer = null;
+  }
+
   popupBox = null;
   timeContainer = null;
+  baseMemoElement = null;
 }
 
 let popupBox = null;
@@ -19,6 +26,8 @@ let activeTimes = {};
 let closedByUser = false;
 let displayEnabled = true;
 let lastMouse = { x: 20, y: 20 };
+let baseMemoElement = null;
+let baseMemoHideTimer = null;
 
 function isFullscreenMode() {
   return Boolean(document.fullscreenElement);
@@ -62,18 +71,35 @@ function createBasePopup(baseText) {
   });
 
   if (baseText) {
-    const mainText = document.createElement("div");
-    Object.assign(mainText.style, {
+    baseMemoElement = document.createElement("div");
+    Object.assign(baseMemoElement.style, {
       color: "#fff",
       background: "rgba(0,0,0,0.72)",
       padding: "6px 10px",
       borderRadius: "4px",
       width: "fit-content",
       maxWidth: "260px",
-      marginBottom: "4px"
+      marginBottom: "4px",
+      opacity: "1",
+      transition: "opacity 0.2s ease"
     });
-    mainText.innerText = baseText;
-    popupBox.appendChild(mainText);
+    baseMemoElement.innerText = baseText;
+    popupBox.appendChild(baseMemoElement);
+
+    if (baseMemoHideTimer) {
+      clearTimeout(baseMemoHideTimer);
+    }
+
+    baseMemoHideTimer = setTimeout(() => {
+      if (!baseMemoElement) return;
+
+      baseMemoElement.style.opacity = "0";
+      setTimeout(() => {
+        if (!baseMemoElement) return;
+        baseMemoElement.remove();
+        baseMemoElement = null;
+      }, 200);
+    }, 3000);
   }
 
   timeContainer = document.createElement("div");
