@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+
+<body>
+  <div class="top-area">
+    <div class="memo-write">
+      </h3><div class="toggle-row">
+        <span>플레이어 메모 표시</span>
+        <label class="switch">
+          <input type="checkbox" id="memoVisibleToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div id="currentVideo"></div>
+
+      <textarea id="memoInput" placeholder="메모 작성"></textarea>
+    </div>
+    <div class="button-row">
+      <button id="saveBaseMemoBtn">기본 메모 저장</button>
+      <button id="saveTimeBtn">현재 시간에 저장</button>
+    </div>
+
+    <hr />
+
+    
+    <div class="search">
+      <h3>검색</h3>
+      <input type="text" id="searchInput" placeholder="제목 또는 메모 검색">
+    </div>
+  </div>
+
+  <div class="list-wrapper">
+    <!-- <h3>저장된 메모 목록 (채널별)</h3> -->
+    <div id="memoList"></div>
+  </div>
+
+  <div class="bottom-actions">
+    <button id="backupBtn">백업(JSON)</button>
+    <label for="restoreInput" class="file-btn">복원(JSON)</label>
+    <input id="restoreInput" type="file" accept="application/json" />
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

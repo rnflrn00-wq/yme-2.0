@@ -1,0 +1,37 @@
+/*#yt-memo-box {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  padding: 14px;
+  width: 260px;
+  border-radius: 8px;
+  z-index: 999999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  font-size: 14px;
+}
+  */
+
+#yt-memo-box button {
+  margin-top: 6px;
+  padding: 4px 8px;
+  background: #ff0000;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.bottom-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}

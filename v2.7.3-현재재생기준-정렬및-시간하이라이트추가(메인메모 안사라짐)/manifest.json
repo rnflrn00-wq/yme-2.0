@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Memo",
+  "version": "1.4",
+  "permissions": ["storage", "scripting", "tabs"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["styles/content.css"]
+    }
+  ]
+}
